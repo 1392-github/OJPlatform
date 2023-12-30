@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제 추가</title>
+</head>
+<body>
+    <form method="post">
+        <label>문제 이름 <input name="title"></label><br>
+        <label>점수 <input type="number" name="score" minvalue="0"></label><br>
+        <label>시간 제한 <input type="number" name="time" minvalue="0"></label><br>
+        <label>메모리 제한 <input type="number" name="ram" minvalue="0"></label><br>
+        <textarea style="width: 100%; height: 80vh;" name="content" placeholder="여기에 문제 내용을 HTML로 적습니다"></textarea><br>
+        <input type="submit" value="확인">
+    </form>
+</body>
+</html>

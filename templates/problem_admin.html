@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제 관리</title>
+</head>
+<body>
+    <form method="post">
+        <label>문제 이름 <input name="name" value="{{c[0]}}"></label><br>
+        <label>점수 <input name="score" value="{{c[1]}}"></label><br>
+        <label>시간 제한 <input name="time" value="{{c[2]}}"></label><br>
+        <label>메모리 제한 <input name="ram" value="{{c[3]}}"></label><br>
+        <textarea name="content" style="width: 100%; height: 60vh;" placeholder="여기에 문제 내용을 HTML로 적습니다">{{c[4]}}</textarea>
+        <input type="submit" value="저장">
+    </form>
+    <form action="/testcase" method="post" enctype="multipart/form-data">
+        <a href="/testcase_download/{{n}}">채점 데이터 다운로드</a><br>
+        <input type="hidden" name="id" value="{{n}}">
+        <input type="file" name="file"><br>
+        <input type="submit" value="업로드">
+    </form>
+    <a href="/problem/{{n}}">문제 보기</a><br>
+    <a href="/delete/{{n}}">문제 삭제하기</a>
+</body>
+</html>

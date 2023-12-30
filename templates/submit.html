@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제출 현황</title>
+    <style>
+        th, td {
+            border: 1px solid #444444;
+        }
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>채점 현황</h1>
+    [F5]로 새로고침이 가능합니다
+    <table>
+        <tr style="width: 100%;">
+            <th>제출 번호</th>
+            <th>문제 번호</th>
+            <th>상태</th>
+        </tr>
+        {% for a in status %}
+        <tr>
+            <td>{{a[0]}}</td>
+            <td>{{a[1]}}</td>
+            {% if a[2] == 0 %}
+            <td style="color: #a49e9e;">기다리는 중</td>
+            {% elif a[2] == 1 %}
+            <td style="color: #e67e22;">채점 중</td>
+            {% elif a[2] == 2 %}
+            <td style="color: #009874;">맞았습니다!!</td>
+            {% elif a[2] == 3 %}
+            <td style="color: #dd4124;">틀렸습니다</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

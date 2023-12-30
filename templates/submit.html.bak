@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제출 현황</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>제출 번호</th>
+            <th>문제 번호</th>
+            <th>상태</th>
+        </tr>
+    </table>
+    <script>
+        socket = new WebSocket("ws://{{domain}}");
+        socket.onmessage = async function (e) {
+            r = await JSON.parse(e.data);
+            document.querySelectorAll("th:not(:first-child)").forEach(function (e) {
+                e.parentNode.removeChild(e)
+            })
+            r.forEach(function (v) {
+                n = document.createElement("tr")
+                n0 = document.createElement("td")
+                n0.textContent = v.id
+                n1 = document.createElement("td")
+                n1.textContent = v.prob
+                n2 = document.createElement("td")
+                if (v.result === 0) {
+                    n2.textContent = "기다리는 중"
+                }
+                if (v.result === 1) {
+                    n2.textContent = "채점 중"
+                }
+                if (v.result === 2) {
+                    n2.textContent = "맞았습니다"
+                }
+                if (v.result === 3) {
+                    n2.textContent = "틀렸습니다"
+                }
+            })
+            
+        }
+    </script>
+</body>
+</html>
